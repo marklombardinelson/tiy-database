@@ -16,18 +16,18 @@
 
   # Ask for a person
 def person_prompt
-  puts "We have #{@people.length}. Do you want to (A), (S), or (D)?"
+  puts "We know all the people. Do you want to Add (A), Seach (S), or Delete (D) someone?"
   gets.chomp
 end
 
  # define the Add, Search, and Delete method into the  people class
  def add_name_prompt
    loop do
-     answer = person_prompt
-     case answer
+     response = person_prompt
+     case response
 
      when "A"
-       name = Person.new
+       person = Person.new
 
        puts "Name"
        person.name = gets.chomp
@@ -56,16 +56,17 @@ end
        @people << person
 
      when "S"
-       puts "Who are you looking for?"
-       name_search = gets.chomp
        count = 0
+
+       puts "Who are you looking for?"
+       name_search_prompt = gets.chomp
        loop do
          if count >= @people.length
            puts "I have no idea who you are talking about"
            break
          end
          name = @people[count]
-         if name_search == person.name
+         if name_search_prompt == person.name
            puts "You found #{name}"
            puts person.name
            puts person.phone_number
@@ -80,10 +81,10 @@ end
      end
 
      when "D"
-       puts "Who are we getting rid of"
-       delete_name = gets.chomp
-
        count = 0
+
+       puts "Who are we getting rid of"
+       delete_name_prompt = gets.chomp
        loop do
          if count >= people.length
            puts "I can't find that person"
@@ -91,7 +92,7 @@ end
        end
        break
      person = @people[count]
-       if delete_name == person.name
+       if delete_name_prompt == person.name
          @people.delete(person)
        end
          count = count + 1

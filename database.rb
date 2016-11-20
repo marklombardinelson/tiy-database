@@ -74,7 +74,7 @@ class Database
             break
           end
 
-          count = count + 1
+          count += 1
         end
 
       when "D"
@@ -95,7 +95,7 @@ class Database
             break
           end
 
-          count = count + 1
+          count += 1
         end
       else
         puts "Try Again"
